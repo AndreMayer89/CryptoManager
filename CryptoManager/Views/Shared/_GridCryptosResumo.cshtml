@@ -1,0 +1,19 @@
+﻿@model CryptoManager.Models.GridListaCryptosModel
+<table style="width:100%;" class="table table-striped tabela-resumo">
+    <thead>
+        <tr>
+            <th width="15%">Crypto</th>
+            <th width="25%">% Valorização (BTC)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var crypto in Model.Lista)
+        {
+            <tr class="linha-crypto linha-resumo" data-nome-crypto="@crypto.NomeCrypto" data-preco-medio-compra="@crypto.PrecoMedioCompraEmBtc" 
+                data-porcentagem-double="@crypto.PorcentagemValorizacaoEmRelacaoAoBtcDouble">
+                <td title="@crypto.NomeCrypto">@crypto.SiglaCrypto</td>
+                <td><p class="valorizacao-em-relacao-btc">@(crypto.PorcentagemValorizacaoEmRelacaoAoBtc + "%")</p></td>
+            </tr>
+        }
+    </tbody>
+</table>

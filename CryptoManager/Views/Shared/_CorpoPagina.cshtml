@@ -1,0 +1,32 @@
+﻿@model CryptoManager.Models.HomeModel
+
+<ul class="nav nav-tabs">
+    <li class="active aba-inicio"><a data-toggle="tab" href="#tab-inicio" class="tab-inicio">Início</a></li>
+    <li class="aba-login"><a data-toggle="tab" href="#tab-login" class="tab-login">Login</a></li>
+@if (Model.GridListaCryptos != null)
+{
+    <li class="aba-resumo"><a data-toggle="tab" href="#tab-resumo" class="tab-resumo">Resumo</a></li>
+    <li class="aba-quantitativo"><a data-toggle="tab" href="#tab-quantitativo" class="tab-quantitativo">Quantitativo</a></li>
+    <li class="aba-grafico"><a data-toggle="tab" href="#tab-grafico" class="tab-grafico">Gráfico</a></li>
+}
+</ul>
+<div class="tab-content">
+    <div id="tab-inicio" class="tab-pane fade in active">
+        @Html.Partial("_AbaInicio", Model)
+    </div>
+    <div id="tab-login" class="tab-pane fade in">
+        @Html.Partial("_Login", Model)
+    </div>
+@if (Model.GridListaCryptos != null)
+{
+    <div id="tab-resumo" class="tab-pane fade">
+        @Html.Partial("_AbaResumo", Model)
+    </div>
+    <div id="tab-quantitativo" class="tab-pane fade">
+        @Html.Partial("_AbaQuantitativo", Model)
+    </div>
+    <div id="tab-grafico" class="tab-pane fade">
+        @Html.Partial("_AbaGrafico", Model)
+    </div>
+}
+</div>

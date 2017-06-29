@@ -1,0 +1,24 @@
+﻿@model CryptoManager.Models.HomeModel
+<div class="row">
+    <div class="col-md-12">
+        <h3>Login</h3>
+    </div>
+    <div class="col-md-12">
+        @using (Html.BeginForm("Login", "Home", FormMethod.Post, new { enctype = "multipart/form-data", id = "login-form", target = "frame-login" }))
+        {
+            <form id="login-form">
+                <div class="form-group">
+                    <input type="file" name="arquivo" id="wallet-file" accept="application/wallet" />
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:0%"></div>
+                    </div>
+                    <span class="col-md-2 control-label">Senha</span>
+                    <input name="senha" id="senha-login" type="password" />
+                    <input type="submit" value="Login" hidden="hidden" />
+                    <button type="button" class="btn btn-sm btn-primary" onclick="Logar()" id="js-upload-submit">Login</button>
+                </div>
+            </form>
+        }
+    </div>
+</div>
+<iframe id="frame-login" hidden="hidden"></iframe>

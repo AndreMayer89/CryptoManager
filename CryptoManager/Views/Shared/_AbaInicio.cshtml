@@ -1,0 +1,51 @@
+﻿@model CryptoManager.Models.HomeModel
+<div class="row">
+    <div class="col-md-12">
+        <h3>Entrada de dados</h3>
+    </div>
+    <div class="col-md-12">
+        <form>
+            <div class="row secao-input-chaves">
+                <div class="form-group">
+                    <span class="col-md-2 control-label">Investimento (R$)</span>
+                    <div class="col-md-10">
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                @Html.TextBox("total-investido", Model.ValorTotalInvestido > 0 ? Model.ValorTotalInvestido.ToString() : string.Empty, new { @type = "password", @class = "total-investido" })
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Partial("_SecaoInputExchange", Model.Bitfinex)
+                </div>
+                <div class="form-group">
+                    @Html.Partial("_SecaoInputExchange", Model.Kraken)
+                </div>
+                <div class="form-group">
+                    @Html.Partial("_SecaoInputExchange", Model.Bittrex)
+                </div>
+                <div class="form-group">
+                    @Html.Partial("_SecaoInputExchange", Model.Poloniex)
+                </div>
+            </div>
+            <div class="row secao-input-chaves top-buffer">
+                <div class="form-group">
+                    @Html.Partial("_GridInputCompraCold", Model.GridInputCompraCold)
+                </div>
+            </div>
+            <div class="row secao-input-chaves top-buffer">
+                <div class="form-group">
+                    @Html.Partial("_GridInputBalancoCold", Model.GridBalancoCold)
+                </div>
+            </div>
+            <div class="row top-buffer">
+                <button class="btn btn-info botao-pesquisar" type="button">Pesquisar</button>
+            </div>
+        </form>
+    </div>
+</div>

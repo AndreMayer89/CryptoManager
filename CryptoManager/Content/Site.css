@@ -1,0 +1,59 @@
+﻿/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.secao-input-chaves {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 15px;
+    background-color: #f5fbd4;
+}
+
+.top-buffer { 
+    margin-top:20px;
+}
+
+.row.linha-com-grafico {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+    .row.linha-com-grafico > [class*='col-'] {
+        display: flex;
+        flex-direction: column;
+    }
+
+.linha-crypto:hover {
+    font-weight: bold;
+}
+
+.linha-quantidade-relativa:hover {
+    font-weight: bold;
+}
+
+p.valorizacao-em-relacao-btc {
+    margin: 0;
+}
+
+.dataTables_filter, .dataTables_info {
+    display: none;
+}

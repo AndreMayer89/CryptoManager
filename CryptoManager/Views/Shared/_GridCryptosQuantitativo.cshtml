@@ -1,0 +1,34 @@
+﻿@model CryptoManager.Models.GridListaCryptosModel
+<table style="width:100%;" class="table table-striped">
+    <thead>
+        <tr>
+            <th width="15%">Crypto</th>
+            <th width="15%">Valor Unidade (BTC)</th>
+            <th width="20%">Quantidade</th>
+            <th width="20%">Valor (BTC)</th>
+            <th width="15%">Valor (R$)</th>
+            <th width="15%">Porcentagem</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var crypto in Model.Lista)
+            {
+            <tr class="linha-crypto linha-quantitativo" data-porcentagem-double="@crypto.PorcentagemValorizacaoEmRelacaoAoBtcDouble">
+                <td title="@crypto.NomeCrypto">@crypto.SiglaCrypto</td>
+                <td>@crypto.ValorCryptoBtc</td>
+                <td>@crypto.QuantidadeCrypto</td>
+                <td>@(crypto.ValorTotalBtc + " (" + crypto.PorcentagemValorizacaoEmRelacaoAoBtc + "%)")</td>
+                <td title="@("Foxbit - " + crypto.ValorTotalReais)">@(crypto.ValorTotalBrlReal)</td>
+                <td>@(crypto.PercentualRelativo + "%")</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3"><b>Total</b></td>
+            <td><b>@Model.ValorTotalBtc</b></td>
+            <td title="@("Foxbit - " + Model.ValorTotalBrl)"><b>@(Model.ValorTotalBrlReal)</b></td>
+            <td></td>
+        </tr>
+    </tfoot>
+</table>

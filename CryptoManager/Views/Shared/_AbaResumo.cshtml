@@ -1,0 +1,36 @@
+﻿@model CryptoManager.Models.HomeModel
+<div class="row">
+    <div class="col-md-6">
+        @Html.Partial("_GridCryptosResumo", Model.GridListaCryptos)
+    </div>
+    <div class="col-md-6">
+        <div>
+            <p>BRL/BTC (Foxbit) - @Model.CotacoesBtc.BtcBrlFoxbit.ToString("N2")</p>
+        </div>
+        <div>
+            <p>BRL/BTC (Dólar) - @((Model.CotacoesBtc.UsdBrl * Model.CotacoesBtc.BtcUsd).ToString("N2"))</p>
+        </div>
+        <div>
+            <p>BRL/USD - @Model.CotacoesBtc.UsdBrl.ToString("N2")</p>
+        </div>
+        <div>
+            <p>USD/BTC - @Model.CotacoesBtc.BtcUsd.ToString("N2")</p>
+        </div>
+        <div>
+            <p title="@("Foxbit: " + Model.PorcentagemValorizacaoTotalRealFoxbit)">@("Valorização em real: " + Model.PorcentagemValorizacaoTotalReal)</p>
+        </div>
+        <div>
+            @foreach (var exchange in CryptoManager.Entidades.TipoExchange.ListarParaResumoOperacao())
+            {
+                if (Model.GridListaCryptos.ResultadosOperacao.Any(r => r.Exchange.Id == exchange.Id))
+                {
+                    foreach (var operacao in CryptoManager.Entidades.TipoOperacaoExchange.ListarParaResumoOperacao())
+                    {
+                        var registro = Model.GridListaCryptos.ResultadosOperacao.FirstOrDefault(
+                            r => r.Exchange.Id == exchange.Id && r.TipoOperacao.Id == operacao.Id);
+                    }
+                }
+            }
+        </div>
+    </div>
+</div>

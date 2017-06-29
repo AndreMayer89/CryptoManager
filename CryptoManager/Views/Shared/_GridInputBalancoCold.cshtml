@@ -1,0 +1,53 @@
+﻿@model CryptoManager.Models.GridBalancoColdModel
+<div>
+    <div class="row">
+        <div class="col-md-3">
+            <div>
+                <label>Moeda</label>
+            </div>
+            <div>
+                @Html.DropDownList("input-balanco-moeda", Model.ListaMoedas, new { @class = "input-balanco-moeda" })
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div>
+                <label>Qtd</label>
+            </div>
+            <div>
+                @Html.TextBox("input-balanco-qtd", "", new { @class = "input-balanco-qtd" })
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div>
+                <label>Exchange cotação</label>
+            </div>
+            <div>
+                @Html.DropDownList("input-balanco-exchange", Model.ListaExchange, new { @class = "input-balanco-exchange" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-success botao-adicionar-linha-balanco-cold" type="button">Adicionar</button>
+        </div>
+    </div>
+</div>
+<table style="width:100%;" class="table table-striped tabela-input-balanco-cold">
+    <thead>
+        <tr>
+            <th width="15%">Moeda</th>
+            <th width="15%">Quantidade</th>
+            <th width="15%">Exchange Cotação</th>
+            <th width="15%">Remover</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var balanco in Model.ListaBalancos)
+        {
+            <tr class="linha-crypto linha-input-balanco-cold">
+                <td class="col-moeda">@balanco.SiglaMoeda</td>
+                <td class="col-qtd">@balanco.QuantidadeMoeda</td>
+                <td class="col-exchange">@balanco.ExchangeCotacao</td>
+                <td><button class="btn btn-danger botao-remover-linha-balanco-cold" type="button">Remover</button></td>
+            </tr>
+        }
+    </tbody>
+</table>

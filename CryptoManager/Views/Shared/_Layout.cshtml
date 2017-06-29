@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoManager</title>
+    @Styles.Render("~/Content/css")
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="~/Scripts/crypto-geral.js"></script>
+    <script type="text/javascript" src="~/Scripts/inicio.js"></script>
+    <script type="text/javascript" src="~/Scripts/login.js"></script>
+    <script type="text/javascript" src="~/Scripts/input-balanco-cold.js"></script>
+    <script type="text/javascript" src="~/Scripts/input-compra-cold.js"></script>
+    <script type="text/javascript" src="~/Scripts/graficos.js"></script>
+</head>
+<body>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

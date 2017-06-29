@@ -1,0 +1,52 @@
+﻿@model CryptoManager.Models.HomeModel
+
+<div class="corpo-pagina">
+    @Html.Partial("_CorpoPagina", Model)
+</div>
+
+@section scripts {
+    <script type="text/javascript">
+        var urlObterCorpo = '@Url.Action("ObterCorpoPagina", "Home")';
+        google.charts.load('current', { 'packages': ['corechart'] });
+
+        $(function () {
+            $(document).on('click', '.botao-pesquisar', function () {
+                montarPagina();
+            });
+
+            $(document).on('change', '.checkbox-crypto-resumo', function () {
+                refazerDashboard();
+            });
+
+            $(document).on('click', 'li.aba-grafico', function () {
+                setTimeout(function () {
+                    refazerDashboard();
+                }, 200);
+            });
+
+            $(document).on('click', '.linha-resumo', function () {
+                var linha = $(this);
+                var precoMedioCompra = linha.attr('data-preco-medio-compra');
+                $(this).popover({ title: linha.attr('data-nome-crypto'), content: 'Preço médio de compra: ' + precoMedioCompra + ' BTC' });
+            });
+
+            $(document).on('click', '.botao-adicionar-linha-compra-cold', function () {
+                adicionarLinhaCompraColdAPartirDoInput();
+            });
+
+            $(document).on('click', '.botao-remover-linha-compra-cold', function () {
+                removerLinhaInputCompraCold($(this));
+            });
+
+            $(document).on('click', '.botao-adicionar-linha-balanco-cold', function () {
+                adicionarLinhaBalancoColdAPartirDoInput();
+            });
+
+            $(document).on('click', '.botao-remover-linha-balanco-cold', function () {
+                removerLinhaInputBalancoCold($(this));
+            });
+
+            $('.input-qtd-moeda-comprada, .input-qtd-moeda-pagamento, .input-balanco-qtd').numeric({ decimal: ".", negative: false });
+        });
+    </script>
+}

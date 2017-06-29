@@ -1,0 +1,8 @@
+﻿@model CryptoManager.Models.HomeModel
+<div style="min-height: 600px; " class="col-md-3">
+    @Html.Partial("_GridCryptosGrafico", Model.GridListaCryptos)
+</div>
+<div style="min-height: 600px; " class="col-md-9">
+    <div id="piechart" style="width: 100%; height: 100%;"></div>
+</div>
+

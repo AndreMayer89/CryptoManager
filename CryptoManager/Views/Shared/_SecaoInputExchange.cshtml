@@ -1,0 +1,14 @@
+﻿@model CryptoManager.Models.SecaoInputExchangeModel
+<span class="col-md-2 control-label">@Model.Titulo</span>
+<div class="col-md-10">
+    <div class="form-group row">
+        <div class="col-md-4">
+            @Html.TextBox($"key-{Model.SufixoInputs}", Model.Key, new { @type = "text", @class = $"key-{Model.SufixoInputs}" })
+        </div>
+        <div class="col-md-4">
+            @Html.TextBox($"secret-{Model.SufixoInputs}", Model.Secret, new { @type = "password", @class = $"secret-{Model.SufixoInputs}" })
+        </div>
+        <div class="col-md-4">
+        </div>
+    </div>
+</div>

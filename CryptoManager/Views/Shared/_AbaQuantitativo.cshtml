@@ -1,0 +1,9 @@
+﻿@model CryptoManager.Models.HomeModel
+<div class="row">
+    @Html.Partial("_GridCryptosQuantitativo", Model.GridListaCryptos)
+</div>
+<div>
+    <div class="col-md-12">
+        <div><p title="@("Foxbit: R$ " + Model.ValorizacaoTotalRealFoxbit)">Valorização: R$ @Model.ValorizacaoTotalReal</p></div>
+    </div>
+</div>

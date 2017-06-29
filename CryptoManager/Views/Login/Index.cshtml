@@ -1,0 +1,18 @@
+﻿@model CryptoManager.Models.LoginModel
+
+<div class="corpo-pagina">
+    @Html.Partial("_Login", Model)
+</div>
+@section scripts {
+    <script type="text/javascript">
+        var urlLogar= '@Url.Action("Logar", "Login")';
+        $(function () {
+            $(document).on('click', '.botao-pesquisar', function () {
+                var senha = $('#input-senha').val();
+                chamadaAjaxGet(urlLogar, { senha: senha }, function (result) {
+
+                });
+            });
+        });
+    </script>
+}
