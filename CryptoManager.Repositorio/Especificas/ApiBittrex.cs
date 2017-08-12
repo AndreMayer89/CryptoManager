@@ -33,71 +33,76 @@ namespace CryptoManager.Repositorio.Especificas
         {
             BittrexEntidade retorno = Cotar("https://bittrex.com/api/v1.1/public/getmarketsummaries");
             List<CotacaoMoedaEntidade> lista = new List<CotacaoMoedaEntidade>();
-            lista.Add(CriarRegistroCotacao(TipoCrypto.BasicAttentionToken, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-BAT").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.WeTrust, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-TRST").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Byteball, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-GBYTE").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.FirstBlood, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-1ST").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Golem, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-GNT").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Ethereum, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-ETH").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Stratis, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-STRAT").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Verge, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-XVG").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Digibyte, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-DGB").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Siacoin, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-SC").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Ardor, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-ARDR").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.NXT, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-NXT").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.FoldingCoin, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-FLDC").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Gnosis, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-GNO").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.EdgeLess, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-EDG").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.iExec, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-RLC").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Factom, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-FCT").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Augur, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-REP").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Lumen, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-XLM").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Antshares, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-ANS").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Litecoin, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-LTC").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Ripple, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-XRP").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.EthereumClassic, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-ETC").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Komodo, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-KMD").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Dash, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-DASH").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Decred, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-DCR").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Lisk, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-LSK").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Bitshares, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-BTS").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Zcash, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-ZEC").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Monero, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-XMR").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Dogecoin, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-DOGE").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Waves, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-WAVES").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.QuantumResistantLedger, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-QRL").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Voxels, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-VOX").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.NEM, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-XEM").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.ReddCoin, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-RDD").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.LBRYCredits, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-LBC").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Ubiq, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-UBQ").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Aragon, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-ANT").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.GameCredits, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-GAME").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Wings, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-WINGS").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Humaniq, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-HMQ").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Counterparty, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-XCP").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Steem, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-STEEM").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.ZCoin, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-XZC").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.SwarmCity, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-SWT").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.PIVX, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-PIVX").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Influxcoin, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-INFX").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.BitcoinDark, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-BTCD").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.ZClassic, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-ZCL").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.VeriCoin, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-VRC").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Ark, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-ARK").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Peercoin, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-PPC").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.DigitalNote, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-XDN").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Credibit, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-CRB").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.ZenCash, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-ZEN").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Syscoin, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-SYS").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Viacoin, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-VIA").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.SingularDTV, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-SNGLS").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Chronobank, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-TIME").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.TokenCard, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-TKN").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Bancor, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-BNT").Last)));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Status, Convert.ToDouble(retorno.result.FirstOrDefault(r => r.MarketName == "BTC-SNT").Last)));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.BasicAttentionToken, retorno, "BTC-BAT"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.WeTrust, retorno, "BTC-TRST"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Byteball, retorno, "BTC-GBYTE"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.FirstBlood, retorno, "BTC-1ST"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Golem, retorno, "BTC-GNT"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Ethereum, retorno, "BTC-ETH"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Stratis, retorno, "BTC-STRAT"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Verge, retorno, "BTC-XVG"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Digibyte, retorno, "BTC-DGB"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Siacoin, retorno, "BTC-SC"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Ardor, retorno, "BTC-ARDR"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.NXT, retorno, "BTC-NXT"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.FoldingCoin, retorno, "BTC-FLDC"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Gnosis, retorno, "BTC-GNO"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.EdgeLess, retorno, "BTC-EDG"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.iExec, retorno, "BTC-RLC"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Factom, retorno, "BTC-FCT"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Augur, retorno, "BTC-REP"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Lumen, retorno, "BTC-XLM"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Litecoin, retorno, "BTC-LTC"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Ripple, retorno, "BTC-XRP"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.EthereumClassic, retorno, "BTC-ETC"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Komodo, retorno, "BTC-KMD"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Dash, retorno, "BTC-DASH"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Decred, retorno, "BTC-DCR"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Lisk, retorno, "BTC-LSK"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Bitshares, retorno, "BTC-BTS"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Zcash, retorno, "BTC-ZEC"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Monero, retorno, "BTC-XMR"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Dogecoin, retorno, "BTC-DOGE"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Waves, retorno, "BTC-WAVES"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.QuantumResistantLedger, retorno, "BTC-QRL"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Voxels, retorno, "BTC-VOX"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.NEM, retorno, "BTC-XEM"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.ReddCoin, retorno, "BTC-RDD"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.LBRYCredits, retorno, "BTC-LBC"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Ubiq, retorno, "BTC-UBQ"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Aragon, retorno, "BTC-ANT"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.GameCredits, retorno, "BTC-GAME"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Wings, retorno, "BTC-WINGS"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Humaniq, retorno, "BTC-HMQ"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Counterparty, retorno, "BTC-XCP"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Steem, retorno, "BTC-STEEM"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.ZCoin, retorno, "BTC-XZC"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.SwarmCity, retorno, "BTC-SWT"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.PIVX, retorno, "BTC-PIVX"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Influxcoin, retorno, "BTC-INFX"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.BitcoinDark, retorno, "BTC-BTCD"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.ZClassic, retorno, "BTC-ZCL"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.VeriCoin, retorno, "BTC-VRC"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Ark, retorno, "BTC-ARK"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Peercoin, retorno, "BTC-PPC"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.DigitalNote, retorno, "BTC-XDN"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Credibit, retorno, "BTC-CRB"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.ZenCash, retorno, "BTC-ZEN"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Syscoin, retorno, "BTC-SYS"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Viacoin, retorno, "BTC-VIA"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.SingularDTV, retorno, "BTC-SNGLS"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Chronobank, retorno, "BTC-TIME"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.TokenCard, retorno, "BTC-TKN"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Bancor, retorno, "BTC-BNT"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Status, retorno, "BTC-SNT"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.BitcoinCash, retorno, "BTC-BCC"));
 
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Bitcoin, 1));
+            lista.Add(new CotacaoMoedaEntidade()
+            {
+                Exchange = TipoExchange.Bittrex,
+                Tipo = TipoCrypto.Bitcoin,
+                ValorUnidadeEmBitcoin = 1
+            });
             return lista;
         }
 
@@ -181,14 +186,22 @@ namespace CryptoManager.Repositorio.Especificas
             }
         }
 
-        private CotacaoMoedaEntidade CriarRegistroCotacao(TipoCrypto tipo, double valorUnidade)
+        private CotacaoMoedaEntidade CriarRegistroCotacao(TipoCrypto tipo, BittrexEntidade cotacoes, string codigoPar)
         {
-            return new CotacaoMoedaEntidade()
+            try
             {
-                Exchange = TipoExchange.Bittrex,
-                Tipo = tipo,
-                ValorUnidadeEmBitcoin = valorUnidade
-            };
+                double valorUnidade = Convert.ToDouble(cotacoes.result.FirstOrDefault(r => r.MarketName == codigoPar).Last);
+                return new CotacaoMoedaEntidade()
+                {
+                    Exchange = TipoExchange.Bittrex,
+                    Tipo = tipo,
+                    ValorUnidadeEmBitcoin = valorUnidade
+                };
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         private BalancoMoedaEntidade CriarRegistroRetornoBalanco(string currency, double balance)

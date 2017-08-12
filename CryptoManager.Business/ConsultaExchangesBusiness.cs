@@ -1,6 +1,7 @@
 ﻿using CryptoManager.Entidades;
 using CryptoManager.Entidades.Especificas;
 using CryptoManager.Repositorio.Especificas;
+using CryptoManager.Util;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -174,7 +175,10 @@ namespace CryptoManager.Business
             {
                 resultado.ResultadoOperacoes.ListaTipoOperacao.Add(Executar(TipoOperacaoExchange.Cotacao, () => { resultado.Cotacao.AddRange(apiExchange.Cotar()); }));
                 resultado.ResultadoOperacoes.ListaTipoOperacao.Add(Executar(TipoOperacaoExchange.Balanco, () => { resultado.Balanco.AddRange(apiExchange.ListarBalancoConta()); }));
-                resultado.ResultadoOperacoes.ListaTipoOperacao.Add(Executar(TipoOperacaoExchange.LivroOrdens, () => { resultado.LivroOrdens.AddRange(apiExchange.ListarHistoricoOrdem()); }));
+                if (!ConfigCm.DesabilitarConsultaHistorico)
+                {
+                    resultado.ResultadoOperacoes.ListaTipoOperacao.Add(Executar(TipoOperacaoExchange.LivroOrdens, () => { resultado.LivroOrdens.AddRange(apiExchange.ListarHistoricoOrdem()); }));
+                }
             }
             return resultado;
         }
