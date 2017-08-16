@@ -209,7 +209,7 @@ namespace CryptoManager.Repositorio.Especificas
             return new BalancoMoedaEntidade()
             {
                 Exchange = TipoExchange.Bittrex,
-                Moeda = TipoCrypto.ObterPorSigla(currency),
+                Moeda = TipoCrypto.ObterPorSigla(currency == "BCC" ? "BCH" : currency),
                 Quantidade = balance
             };
         }

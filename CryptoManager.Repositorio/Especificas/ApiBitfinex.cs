@@ -32,7 +32,7 @@ namespace CryptoManager.Repositorio.Especificas
 
         public IEnumerable<CotacaoMoedaEntidade> Cotar()
         {
-            object[][] retorno = Cotar("https://api.bitfinex.com/v2/tickers?symbols=tETHBTC,tIOTBTC,tLTCBTC,tETCBTC,tZECBTC,tXMRBTC,tDSHBTC,tBCCBTC,tXRPBTC");
+            object[][] retorno = Cotar("https://api.bitfinex.com/v2/tickers?symbols=tETHBTC,tIOTBTC,tLTCBTC,tETCBTC,tZECBTC,tXMRBTC,tDSHBTC,tBCCBTC,tXRPBTC,tBCHBTC");
             List<CotacaoMoedaEntidade> lista = new List<CotacaoMoedaEntidade>();
             lista.Add(CriarRegistroRetorno(TipoCrypto.Ethereum, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tETHBTC")[7])));
             lista.Add(CriarRegistroRetorno(TipoCrypto.IOTA, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tIOTBTC")[7])));
@@ -43,6 +43,7 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroRetorno(TipoCrypto.Dash, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tDSHBTC")[7])));
             lista.Add(CriarRegistroRetorno(TipoCrypto.Bitconnect, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tBCCBTC")[7])));
             lista.Add(CriarRegistroRetorno(TipoCrypto.Ripple, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tXRPBTC")[7])));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.BitcoinCash, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tBCHBTC")[7])));
             lista.Add(CriarRegistroRetorno(TipoCrypto.Bitcoin, 1));
             return lista;
         }
