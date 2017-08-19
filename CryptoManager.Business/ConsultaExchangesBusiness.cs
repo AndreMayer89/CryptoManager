@@ -74,7 +74,7 @@ namespace CryptoManager.Business
                     retorno.ListaQuantidades.First(q => q != null && q.Tipo != null && q.Tipo.Sigla == moeda.Sigla).ListaBalancos.Add(
                         new BalancoMoedaEntidade()
                         {
-                            Exchange = TipoExchange.ObterPorNome(moedaColdWallet.ExchangeCotacao),
+                            Exchange = TipoExchange.Obter(Convert.ToInt32(moedaColdWallet.ExchangeCotacao)),
                             Moeda = moeda,
                             Quantidade = moedaColdWallet.QuantidadeMoeda,
                             ColdWallet = true

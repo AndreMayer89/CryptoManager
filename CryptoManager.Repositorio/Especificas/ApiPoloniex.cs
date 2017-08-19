@@ -54,6 +54,8 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroCotacao(TipoCrypto.Siacoin, retorno.BTC_SC.last));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Stellar, retorno.BTC_STR.last));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Stratis, retorno.BTC_STRAT.last));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.BitcoinCash, retorno.BTC_BCH.last));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.ZeroX, retorno.BTC_ZRX.last));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Bitcoin, 1));
             return lista;
         }
@@ -64,6 +66,7 @@ namespace CryptoManager.Repositorio.Especificas
             List<OrdemMoedaEntidade> lista = new List<OrdemMoedaEntidade>();
             lista.AddRange(CriarRegistroOrdem(GetPropertyName(() => balancos.BTC_AMP), balancos.BTC_AMP));
             lista.AddRange(CriarRegistroOrdem(GetPropertyName(() => balancos.BTC_ARDR), balancos.BTC_ARDR));
+            lista.AddRange(CriarRegistroOrdem(GetPropertyName(() => balancos.BTC_BCH), balancos.BTC_BCH));
             lista.AddRange(CriarRegistroOrdem(GetPropertyName(() => balancos.BTC_BCN), balancos.BTC_BCN));
             lista.AddRange(CriarRegistroOrdem(GetPropertyName(() => balancos.BTC_BCY), balancos.BTC_BCY));
             lista.AddRange(CriarRegistroOrdem(GetPropertyName(() => balancos.BTC_BELA), balancos.BTC_BELA));
@@ -128,6 +131,7 @@ namespace CryptoManager.Repositorio.Especificas
             lista.AddRange(CriarRegistroOrdem(GetPropertyName(() => balancos.BTC_XRP), balancos.BTC_XRP));
             lista.AddRange(CriarRegistroOrdem(GetPropertyName(() => balancos.BTC_XVC), balancos.BTC_XVC));
             lista.AddRange(CriarRegistroOrdem(GetPropertyName(() => balancos.BTC_ZEC), balancos.BTC_ZEC));
+            lista.AddRange(CriarRegistroOrdem(GetPropertyName(() => balancos.BTC_ZRX), balancos.BTC_ZRX));
             return lista;
         }
 
@@ -137,6 +141,7 @@ namespace CryptoManager.Repositorio.Especificas
             var balancos = ObterBalancoConta();
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.AMP), balancos.AMP));
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.ARDR), balancos.ARDR));
+            lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.BCH), balancos.BCH));
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.BCN), balancos.BCN));
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.BCY), balancos.BCY));
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.BELA), balancos.BELA));
@@ -201,6 +206,7 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.XRP), balancos.XRP));
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.XVC), balancos.XVC));
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.ZEC), balancos.ZEC));
+            lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.ZRX), balancos.ZRX));
             lista = lista.Where(r => r != null && r.Quantidade > 0).ToList();
             return lista;
         }
@@ -309,6 +315,7 @@ namespace CryptoManager.Repositorio.Especificas
         {
             public HistoricoOrdemPoloniex[] BTC_AMP { get; set; }
             public HistoricoOrdemPoloniex[] BTC_ARDR { get; set; }
+            public HistoricoOrdemPoloniex[] BTC_BCH { get; set; }
             public HistoricoOrdemPoloniex[] BTC_BCN { get; set; }
             public HistoricoOrdemPoloniex[] BTC_BCY { get; set; }
             public HistoricoOrdemPoloniex[] BTC_BELA { get; set; }
@@ -373,6 +380,7 @@ namespace CryptoManager.Repositorio.Especificas
             public HistoricoOrdemPoloniex[] BTC_XRP { get; set; }
             public HistoricoOrdemPoloniex[] BTC_XVC { get; set; }
             public HistoricoOrdemPoloniex[] BTC_ZEC { get; set; }
+            public HistoricoOrdemPoloniex[] BTC_ZRX { get; set; }
         }
 
         public class HistoricoOrdemPoloniex

@@ -22,7 +22,7 @@ namespace CryptoManager.Models
         {
             get
             {
-                return TotalValorizacaoBrl.ToString("N2") + " (" + PorcentagemValorizacaoTotalReal + "%)";
+                return TotalValorizacaoBrl.ToString("N2") + " (" + PorcentagemValorizacaoTotalReal + ")";
             }
         }
 

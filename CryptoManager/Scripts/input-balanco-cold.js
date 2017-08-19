@@ -25,9 +25,9 @@ function obterListaMoedasColdWallet() {
     var lista = [];
     $.each($('.linha-input-balanco-cold'), function () {
         lista.push({
-            SiglaMoeda: $(this).find('.sigla-moeda').val(),
-            QuantidadeMoeda: $(this).find('.qtd-moeda').val(),
-            ExchangeCotacao: $(this).find('.exchange-cotacao').val()
+            SiglaMoeda: $(this).find('.col-moeda').text(),
+            QuantidadeMoeda: $(this).find('.col-qtd').text(),
+            ExchangeCotacao: $(this).find('.col-exchange').text()
         });
     });
     return JSON.stringify(lista);

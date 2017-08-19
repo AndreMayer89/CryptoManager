@@ -4,6 +4,7 @@
     {
         public PoloniexQuantidadeEntidadeMoeda AMP { get; set; }
         public PoloniexQuantidadeEntidadeMoeda ARDR { get; set; }
+        public PoloniexQuantidadeEntidadeMoeda BCH { get; set; }
         public PoloniexQuantidadeEntidadeMoeda BCN { get; set; }
         public PoloniexQuantidadeEntidadeMoeda BCY { get; set; }
         public PoloniexQuantidadeEntidadeMoeda BELA { get; set; }
@@ -68,6 +69,7 @@
         public PoloniexQuantidadeEntidadeMoeda XRP { get; set; }
         public PoloniexQuantidadeEntidadeMoeda XVC { get; set; }
         public PoloniexQuantidadeEntidadeMoeda ZEC { get; set; }
+        public PoloniexQuantidadeEntidadeMoeda ZRX { get; set; }
 
         public class PoloniexQuantidadeEntidadeMoeda
         {

@@ -81,6 +81,7 @@ namespace CryptoManager.Entidades
         public static readonly TipoCrypto Bancor = Criar("Bancor", "BNT");
         public static readonly TipoCrypto Status = Criar("Status", "SNT");
         public static readonly TipoCrypto BitcoinCash = Criar("BitcoinCash", "BCH");
+        public static readonly TipoCrypto ZeroX = Criar("0X", "ZRX");
 
 
         public int Id { get; private set; }
