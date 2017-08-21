@@ -164,7 +164,7 @@ namespace CryptoManager.Repositorio.Especificas
             return new BalancoMoedaEntidade()
             {
                 Exchange = TipoExchange.Kraken,
-                Moeda = TipoCrypto.ObterPorSigla(currency),
+                Moeda = TipoCrypto.ObterPorSigla(currency == "XBT" ? "BTC" : currency),
                 Quantidade = balance
             };
         }

@@ -96,10 +96,9 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroCotacao(TipoCrypto.Bancor, retorno, "BTC-BNT"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Status, retorno, "BTC-SNT"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.BitcoinCash, retorno, "BTC-BCC"));
-
             lista.Add(new CotacaoMoedaEntidade()
             {
-                Exchange = TipoExchange.Bittrex,
+                Exchange = ObterTipo(),
                 Tipo = TipoCrypto.Bitcoin,
                 ValorUnidadeEmBitcoin = 1
             });
@@ -193,7 +192,7 @@ namespace CryptoManager.Repositorio.Especificas
                 double valorUnidade = Convert.ToDouble(cotacoes.result.FirstOrDefault(r => r.MarketName == codigoPar).Last);
                 return new CotacaoMoedaEntidade()
                 {
-                    Exchange = TipoExchange.Bittrex,
+                    Exchange = ObterTipo(),
                     Tipo = tipo,
                     ValorUnidadeEmBitcoin = valorUnidade
                 };

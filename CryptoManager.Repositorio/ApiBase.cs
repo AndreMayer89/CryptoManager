@@ -74,9 +74,9 @@ namespace CryptoManager.Repositorio
                 TimeoutApi = pTimeout;
             }
 
-            protected override WebRequest GetWebRequest(Uri pAddress)
+            protected override WebRequest GetWebRequest(Uri address)
             {
-                var request = base.GetWebRequest(pAddress);
+                var request = base.GetWebRequest(address);
                 if (request != null)
                     request.Timeout = TimeoutApi;
                 return request;

@@ -32,19 +32,22 @@ namespace CryptoManager.Repositorio.Especificas
 
         public IEnumerable<CotacaoMoedaEntidade> Cotar()
         {
-            object[][] retorno = Cotar("https://api.bitfinex.com/v2/tickers?symbols=tETHBTC,tIOTBTC,tLTCBTC,tETCBTC,tZECBTC,tXMRBTC,tDSHBTC,tBCCBTC,tXRPBTC,tBCHBTC");
+            object[][] retorno = Cotar("https://api.bitfinex.com/v2/tickers?symbols=tETHBTC,tIOTBTC,tLTCBTC,tETCBTC,tZECBTC,tXMRBTC,tDSHBTC,tBCCBTC,tXRPBTC,tBCHBTC,tOMGBTC,tEOSBTC,tSANBTC");
             List<CotacaoMoedaEntidade> lista = new List<CotacaoMoedaEntidade>();
-            lista.Add(CriarRegistroRetorno(TipoCrypto.Ethereum, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tETHBTC")[7])));
-            lista.Add(CriarRegistroRetorno(TipoCrypto.IOTA, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tIOTBTC")[7])));
-            lista.Add(CriarRegistroRetorno(TipoCrypto.Litecoin, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tLTCBTC")[7])));
-            lista.Add(CriarRegistroRetorno(TipoCrypto.EthereumClassic, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tETCBTC")[7])));
-            lista.Add(CriarRegistroRetorno(TipoCrypto.Zcash, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tZECBTC")[7])));
-            lista.Add(CriarRegistroRetorno(TipoCrypto.Monero, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tXMRBTC")[7])));
-            lista.Add(CriarRegistroRetorno(TipoCrypto.Dash, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tDSHBTC")[7])));
-            lista.Add(CriarRegistroRetorno(TipoCrypto.Bitconnect, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tBCCBTC")[7])));
-            lista.Add(CriarRegistroRetorno(TipoCrypto.Ripple, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tXRPBTC")[7])));
-            lista.Add(CriarRegistroRetorno(TipoCrypto.BitcoinCash, Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString() == "tBCHBTC")[7])));
-            lista.Add(CriarRegistroRetorno(TipoCrypto.Bitcoin, 1));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.BitcoinCash, retorno, "tBCHBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.Dash, retorno, "tDSHBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.OmiseGo, retorno, "tEOSBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.EthereumClassic, retorno, "tETCBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.Ethereum, retorno, "tETHBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.IOTA, retorno, "tIOTBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.Litecoin, retorno, "tLTCBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.Zcash, retorno, "tZECBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.Monero, retorno, "tXMRBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.Bitconnect, retorno, "tBCCBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.Ripple, retorno, "tXRPBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.OmiseGo, retorno, "tOMGBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.Santiment, retorno, "tSANBTC"));
+            lista.Add(new CotacaoMoedaEntidade() { Exchange = ObterTipo(), Tipo = TipoCrypto.Bitcoin, ValorUnidadeEmBitcoin = 1 });
             return lista;
         }
 
@@ -122,7 +125,7 @@ namespace CryptoManager.Repositorio.Especificas
             {
                 Symbol = par,
                 Timestamp = (new DateTime(2017, 01, 01).Subtract(new DateTime(1970, 1, 1))).TotalSeconds.ToString()
-            });    
+            });
             var retorno = JsonConvert.DeserializeObject<HistoricoOrdemBitfinex[]>(resultadoConsulta);
             foreach (var historico in retorno)
             {
@@ -162,8 +165,9 @@ namespace CryptoManager.Repositorio.Especificas
             };
         }
 
-        private CotacaoMoedaEntidade CriarRegistroRetorno(TipoCrypto tipo, double valorUnidade)
+        private CotacaoMoedaEntidade CriarRegistroRetorno(TipoCrypto tipo, object[][] retorno, string siglaPar)
         {
+            double valorUnidade = Convert.ToDouble(retorno.FirstOrDefault(r => r[0].ToString().Equals(siglaPar))[7]);
             return new CotacaoMoedaEntidade() { Exchange = TipoExchange.Bitfinex, Tipo = tipo, ValorUnidadeEmBitcoin = valorUnidade };
         }
 

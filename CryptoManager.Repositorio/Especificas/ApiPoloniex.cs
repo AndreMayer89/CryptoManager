@@ -56,7 +56,12 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroCotacao(TipoCrypto.Stratis, retorno.BTC_STRAT.last));
             lista.Add(CriarRegistroCotacao(TipoCrypto.BitcoinCash, retorno.BTC_BCH.last));
             lista.Add(CriarRegistroCotacao(TipoCrypto.ZeroX, retorno.BTC_ZRX.last));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Bitcoin, 1));
+            lista.Add(new CotacaoMoedaEntidade()
+            {
+                Exchange = ObterTipo(),
+                Tipo = TipoCrypto.Bitcoin,
+                ValorUnidadeEmBitcoin = 1
+            });
             return lista;
         }
 
@@ -288,7 +293,7 @@ namespace CryptoManager.Repositorio.Especificas
         {
             return new CotacaoMoedaEntidade()
             {
-                Exchange = TipoExchange.Poloniex,
+                Exchange = ObterTipo(),
                 Tipo = tipo,
                 ValorUnidadeEmBitcoin = valorUnidade
             };
