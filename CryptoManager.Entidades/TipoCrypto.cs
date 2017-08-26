@@ -50,7 +50,7 @@ namespace CryptoManager.Entidades
         public static readonly TipoCrypto Dogecoin = Criar("Dogecoin", "DOGE");
         public static readonly TipoCrypto Bitconnect = Criar("Bitconnect", "BCC");
         public static readonly TipoCrypto Komodo = Criar("Komodo", "KMD");
-        public static readonly TipoCrypto Antshares = Criar("Komodo", "ANT");
+        public static readonly TipoCrypto NEO = Criar("NEO", "NEO");
         public static readonly TipoCrypto DigixDAO = Criar("DigixDAO", "DGD");
         public static readonly TipoCrypto QuantumResistantLedger = Criar("Quantum Resistant Ledger", "QRL");
         public static readonly TipoCrypto Voxels = Criar("Voxels", "VOX");
