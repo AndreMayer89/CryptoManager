@@ -150,14 +150,20 @@ namespace CryptoManager.Business
             return listaComprasColdWalletConsolidada;
         }
 
-        public static double ObterValorTotalEmBtc(List<CotacaoMoedaEntidade> listaCotacoes, CryptoQuantidadeEntidade moeda)
+        public static double ObterValorTotalEmBtc(IEnumerable<CotacaoMoedaEntidade> listaCotacoes, CryptoQuantidadeEntidade moeda)
         {
             if (moeda.Quantidade > 0)
             {
                 var cotacoesDaMoeda = listaCotacoes.Where(c => c.Tipo.Sigla == moeda.Tipo.Sigla).ToList();
                 double valorAcumulado = 0;
-                cotacoesDaMoeda.ForEach(c => valorAcumulado +=
-                    (c.ValorUnidadeEmBitcoin * moeda.ListaBalancos.FirstOrDefault(b => b.Exchange.Id == c.Exchange.Id)?.Quantidade ?? 0));
+                foreach (var balanco in moeda.ListaBalancos)
+                {
+                    var cotacaoUtilizada = cotacoesDaMoeda.FirstOrDefault(c => c.Exchange.Id == balanco.Exchange.Id);
+                    if (cotacaoUtilizada != null)
+                    {
+                        valorAcumulado += balanco.Quantidade * cotacaoUtilizada.ValorUnidadeEmBitcoin;
+                    }
+                }
                 return valorAcumulado;
             }
             return 0;
