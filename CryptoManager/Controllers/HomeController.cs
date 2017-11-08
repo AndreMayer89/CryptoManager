@@ -18,7 +18,7 @@ namespace CryptoManager.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ViewResult Index()
         {
             HomeModel model = new HomeModel();
             model.CotacoesBtc = new CotacoesBtcModel();
@@ -49,6 +49,7 @@ namespace CryptoManager.Controllers
                 logou = true
             }, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult ObterCorpoPagina(double totalInvestido, string entradaPolo, string entradaBittrex,
             string entradaKraken, string entradaBitfinex, string listaBalancoColdWalletString, string listaComprasColdWalletString)
         {
