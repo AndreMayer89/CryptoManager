@@ -205,5 +205,11 @@ namespace CryptoManager.Business
             resultado.Milisegundos = stopwatch.Elapsed.TotalMilliseconds;
             return resultado;
         }
+
+        public object Cotar(int? idExchange)
+        {
+            //TODO [André] - Utilizar o parâmetro
+            return new ApiBitfinex(null, null, 0).Cotar().ToList();
+        }
     }
 }
