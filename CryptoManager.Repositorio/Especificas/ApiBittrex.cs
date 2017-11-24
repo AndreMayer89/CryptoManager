@@ -97,6 +97,7 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroCotacao(TipoCrypto.Status, retorno, "BTC-SNT"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.BitcoinCash, retorno, "BTC-BCC"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.NEO, retorno, "BTC-NEO"));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.BitcoinGold, retorno, "BTC-BTG"));
             lista.Add(new CotacaoMoedaEntidade()
             {
                 Exchange = ObterTipo(),

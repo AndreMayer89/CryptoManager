@@ -32,7 +32,7 @@ namespace CryptoManager.Repositorio.Especificas
 
         public IEnumerable<CotacaoMoedaEntidade> Cotar()
         {
-            object[][] retorno = Cotar("https://api.bitfinex.com/v2/tickers?symbols=tETHBTC,tIOTBTC,tLTCBTC,tETCBTC,tZECBTC,tXMRBTC,tDSHBTC,tBCCBTC,tXRPBTC,tBCHBTC,tOMGBTC,tEOSBTC,tSANBTC");
+            object[][] retorno = Cotar("https://api.bitfinex.com/v2/tickers?symbols=tETHBTC,tIOTBTC,tLTCBTC,tETCBTC,tZECBTC,tXMRBTC,tDSHBTC,tBCCBTC,tXRPBTC,tBCHBTC,tOMGBTC,tEOSBTC,tSANBTC,tNEOBTC,tBTGBTC");
             List<CotacaoMoedaEntidade> lista = new List<CotacaoMoedaEntidade>();
             lista.Add(CriarRegistroRetorno(TipoCrypto.BitcoinCash, retorno, "tBCHBTC"));
             lista.Add(CriarRegistroRetorno(TipoCrypto.Dash, retorno, "tDSHBTC"));
@@ -47,6 +47,8 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroRetorno(TipoCrypto.Ripple, retorno, "tXRPBTC"));
             lista.Add(CriarRegistroRetorno(TipoCrypto.OmiseGo, retorno, "tOMGBTC"));
             lista.Add(CriarRegistroRetorno(TipoCrypto.Santiment, retorno, "tSANBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.NEO, retorno, "tNEOBTC"));
+            lista.Add(CriarRegistroRetorno(TipoCrypto.BitcoinGold, retorno, "tBTGBTC"));
             lista.Add(new CotacaoMoedaEntidade() { Exchange = ObterTipo(), Tipo = TipoCrypto.Bitcoin, ValorUnidadeEmBitcoin = 1 });
             return lista;
         }
