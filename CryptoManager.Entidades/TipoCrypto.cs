@@ -9,6 +9,7 @@ namespace CryptoManager.Entidades
         private static readonly List<TipoCrypto> Lista = new List<TipoCrypto>();
 
         public static readonly TipoCrypto Real = Criar("Real", "BRL");
+        public static readonly TipoCrypto Dolar = Criar("Dólar", "USD");
         public static readonly TipoCrypto Bitcoin = Criar("Bitcoin", "BTC");
         public static readonly TipoCrypto Ethereum = Criar("Ethereum", "ETH");
         public static readonly TipoCrypto Ripple = Criar("Ripple", "XRP");
