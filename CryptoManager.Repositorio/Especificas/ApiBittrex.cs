@@ -59,7 +59,6 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroCotacao(TipoCrypto.Dash, retorno, "BTC-DASH"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Decred, retorno, "BTC-DCR"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Lisk, retorno, "BTC-LSK"));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Bitshares, retorno, "BTC-BTS"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Zcash, retorno, "BTC-ZEC"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Monero, retorno, "BTC-XMR"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Dogecoin, retorno, "BTC-DOGE"));
@@ -91,8 +90,6 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroCotacao(TipoCrypto.Syscoin, retorno, "BTC-SYS"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Viacoin, retorno, "BTC-VIA"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.SingularDTV, retorno, "BTC-SNGLS"));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.Chronobank, retorno, "BTC-TIME"));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.TokenCard, retorno, "BTC-TKN"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Bancor, retorno, "BTC-BNT"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Status, retorno, "BTC-SNT"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.BitcoinCash, retorno, "BTC-BCC"));
