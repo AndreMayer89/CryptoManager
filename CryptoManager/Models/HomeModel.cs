@@ -47,8 +47,7 @@ namespace CryptoManager.Models
         public SecaoInputExchangeModel Kraken { get; set; }
         public SecaoInputExchangeModel Poloniex { get; set; }
         public SecaoInputExchangeModel Bittrex { get; set; }
-
-        public GridInputCompraColdModel GridInputCompraCold { get; set; }
+        
         public GridBalancoColdModel GridBalancoCold { get; set; }
 
         public HomeModel()
@@ -57,7 +56,6 @@ namespace CryptoManager.Models
             Bittrex = new SecaoInputExchangeModel() { Titulo = TipoExchange.Bittrex.Nome, SufixoInputs = TipoExchange.Bittrex.Nome.ToLowerInvariant() };
             Kraken = new SecaoInputExchangeModel() { Titulo = TipoExchange.Kraken.Nome, SufixoInputs = TipoExchange.Kraken.Nome.ToLowerInvariant() };
             Poloniex = new SecaoInputExchangeModel() { Titulo = TipoExchange.Poloniex.Nome, SufixoInputs = TipoExchange.Poloniex.Nome.ToLowerInvariant() };
-            GridInputCompraCold = new GridInputCompraColdModel();
             GridBalancoCold = new GridBalancoColdModel();
         }
     }

@@ -2,17 +2,17 @@
 using CryptoManager.Entidades;
 using CryptoManager.Entidades.Especificas;
 using CryptoManager.Models;
+using CryptoManager.Util.Cache;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Web.Mvc;
-using System.Text;
 using System.Security.Cryptography;
+using System.Text;
 using System.Web;
-using CryptoManager.Util.Cache;
-using System;
+using System.Web.Mvc;
 
 namespace CryptoManager.Controllers
 {
@@ -67,8 +67,7 @@ namespace CryptoManager.Controllers
                 Bittrex = entradaBittrexEntidade,
                 Kraken = entradaKrakenEntidade,
                 Bitfinex = entradaBitfinexEntidade,
-                BalancoCold = listaBalancoColdWallet,
-                ComprasCold = listaComprasColdWallet
+                BalancoCold = listaBalancoColdWallet
             };
 
             HomeModel model = ObterModel(carteiraEntrada);
@@ -89,25 +88,23 @@ namespace CryptoManager.Controllers
 
             model.GridListaCryptos = ObterModelListaCryptos(model.ValorBrlBtcDouble, model.ValorUsdBtcDouble, 
                 model.ValorBrlBtcRealDouble, carteiraEntrada.Poloniex, carteiraEntrada.Bittrex, carteiraEntrada.Kraken, carteiraEntrada.Bitfinex,
-                carteiraEntrada.BalancoCold, carteiraEntrada.ComprasCold);
+                carteiraEntrada.BalancoCold);
             model.ValorTotalInvestido = carteiraEntrada.Investido;
             PreencherSecaoExchange(model.Poloniex, carteiraEntrada.Poloniex);
             PreencherSecaoExchange(model.Bittrex, carteiraEntrada.Bittrex);
             PreencherSecaoExchange(model.Kraken, carteiraEntrada.Kraken);
             PreencherSecaoExchange(model.Bitfinex, carteiraEntrada.Bitfinex);
-            model.GridInputCompraCold.ListaCompras = carteiraEntrada.ComprasCold;
             model.GridBalancoCold.ListaBalancos = carteiraEntrada.BalancoCold;
             return model;
         }
 
         private GridListaCryptosModel ObterModelListaCryptos(double valorBrlBtc, double valorUsdBtc, double valorBrlBtcReal, 
             PoloniexEntradaApiEntidade entradaPoloniex, BittrexEntradaApiEntidade entradaBittrex, KrakenEntradaApiEntidade entradaKraken,
-            BitfinexEntradaApiEntidade entradaBitfinex, List<MoedaEmCarteiraEntidade> listaBalancoColdWallet,
-            List<CompraMoedaEmColdEntidade> listaComprasColdWallet)
+            BitfinexEntradaApiEntidade entradaBitfinex, List<MoedaEmCarteiraEntidade> listaBalancoColdWallet)
         {
             List<CryptoModel> lista = new List<CryptoModel>();
             var consulta = new ConsultaExchangesBusiness().ConsultarExchanges(entradaPoloniex,
-                entradaBittrex, entradaKraken, entradaBitfinex, listaBalancoColdWallet, listaComprasColdWallet);
+                entradaBittrex, entradaKraken, entradaBitfinex, listaBalancoColdWallet);
             foreach (var quantidade in consulta.ListaQuantidades)
             {
                 if (quantidade.Quantidade > 0)
@@ -126,11 +123,8 @@ namespace CryptoManager.Controllers
                             NomeCrypto = quantidade.Tipo.Nome,
                             SiglaCrypto = quantidade.Tipo.Sigla,
                             QuantidadeCryptoDouble = quantidade.Quantidade,
-                            QuantidadeBtcInvestida = quantidade.QuantidadeBtcInvestida,
                             ValorCryptoBtc = valorUnidadeEmBtc.ToString("N8"),
                             ValorTotalBtcDouble = valorTotalEmBtc,
-                            PorcentagemValorizacaoEmRelacaoAoBtc = porcentagemValorizacaoBtc.ToString("N2"),
-                            PorcentagemValorizacaoEmRelacaoAoBtcDouble = porcentagemValorizacaoBtc.ToString("N2", CultureInfo.CreateSpecificCulture("en-US")),
                             ValorTotalBrlDouble = valorTotalBrl,
                             ValorTotalBrlRealDouble = valorTotalBrlReal,
                             ValorTotalDolaresDouble = valorTotalDolares

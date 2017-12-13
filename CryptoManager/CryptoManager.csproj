@@ -463,7 +463,6 @@
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\inicio.js" />
     <Content Include="Scripts\input-balanco-cold.js" />
-    <Content Include="Scripts\input-compra-cold.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
@@ -517,7 +516,6 @@
     <Content Include="Views\Shared\_SecaoInputExchange.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Shared\_Login.cshtml" />
-    <Content Include="Views\Shared\_GridInputCompraCold.cshtml" />
     <Content Include="Views\Shared\_GridInputBalancoCold.cshtml" />
   </ItemGroup>
   <ItemGroup>

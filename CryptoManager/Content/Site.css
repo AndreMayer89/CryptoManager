@@ -48,10 +48,6 @@ textarea {
     font-weight: bold;
 }
 
-p.valorizacao-em-relacao-btc {
-    margin: 0;
-}
-
 .dataTables_filter, .dataTables_info {
     display: none;
 }

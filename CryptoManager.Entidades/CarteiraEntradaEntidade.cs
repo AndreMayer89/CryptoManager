@@ -15,6 +15,5 @@ namespace CryptoManager.Entidades
         public KrakenEntradaApiEntidade Kraken { get; set; }
         public BitfinexEntradaApiEntidade Bitfinex { get; set; }
         public List<MoedaEmCarteiraEntidade> BalancoCold { get; set; }
-        public List<CompraMoedaEmColdEntidade> ComprasCold { get; set; }
     }
 }

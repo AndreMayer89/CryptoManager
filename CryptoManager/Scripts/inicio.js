@@ -9,8 +9,7 @@ function montarPagina() {
             entradaBittrex: obterEntradaBittrex(),
             entradaBitfinex: obterEntradaBitfinex(),
             entradaKraken: obterEntradaKraken(),
-            listaBalancoColdWalletString: obterListaMoedasColdWallet(),
-            listaComprasColdWalletString: obterListaComprasMoedaCold()
+            listaBalancoColdWalletString: obterListaMoedasColdWallet()
         },
         function (ret) {
             mostrarCarteira(ret);
@@ -29,9 +28,6 @@ function mostrarCarteira(retorno) {
     transformarEmTabelaOrdenavel($('#tab-resumo table, #tab-quantitativo table, #tab-grafico table'));
     listaCryptosUltimaPesquisa = retorno.listaCryptos;
     refazerDashboard();
-    $.each($('.linha-quantitativo, .linha-resumo'), function () {
-        $(this).css('background-color', getColorForPercentage(parseFloat($(this).attr('data-porcentagem-double'))));
-    });
 
     if (!retorno.logou) {
         chaveSessao = retorno.chaveSessao;
