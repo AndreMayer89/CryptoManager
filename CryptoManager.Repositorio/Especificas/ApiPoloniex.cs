@@ -56,6 +56,7 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroCotacao(TipoCrypto.Stratis, retorno.BTC_STRAT.last));
             lista.Add(CriarRegistroCotacao(TipoCrypto.BitcoinCash, retorno.BTC_BCH.last));
             lista.Add(CriarRegistroCotacao(TipoCrypto.ZeroX, retorno.BTC_ZRX.last));
+            lista.Add(CriarRegistroCotacao(TipoCrypto.Gas, retorno.BTC_GAS.last));
             lista.Add(new CotacaoMoedaEntidade()
             {
                 Exchange = ObterTipo(),

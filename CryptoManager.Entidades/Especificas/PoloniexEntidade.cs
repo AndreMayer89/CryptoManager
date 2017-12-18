@@ -18,6 +18,7 @@
         public PoloniexMoedaEntidade BTC_STRAT { get; set; }
         public PoloniexMoedaEntidade BTC_BCH { get; set; }
         public PoloniexMoedaEntidade BTC_ZRX { get; set; }
+        public PoloniexMoedaEntidade BTC_GAS { get; set; }
 
         public class PoloniexMoedaEntidade
         {
