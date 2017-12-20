@@ -129,7 +129,7 @@ namespace CryptoManager.Controllers
                     }
                 }
             }
-            var model = new GridListaCryptosModel(valorBrlBtc, valorBrlBtcReal)
+            var model = new GridListaCryptosModel(valorBrlBtc, valorBrlBtcReal, valorUsdBtc)
             {
                 Lista = lista.OrderByDescending(c => c.ValorTotalBrlRealDouble).ToList(),
                 ResultadosOperacao = ObterListaResultadosOperacao(consulta.ListaResultadosOperacoesExchanges)
