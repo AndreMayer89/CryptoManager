@@ -6,7 +6,8 @@
             <th width="15%">Valor Unidade (BTC)</th>
             <th width="20%">Quantidade</th>
             <th width="20%">Valor (BTC)</th>
-            <th width="15%">Valor (R$)</th>
+            <th width="20%">Valor (USD)</th>
+            <th width="15%">Valor (BRL)</th>
             <th width="15%">Porcentagem</th>
         </tr>
     </thead>
@@ -18,7 +19,8 @@
                 <td>@crypto.ValorCryptoBtc</td>
                 <td>@crypto.QuantidadeCrypto</td>
                 <td>@crypto.ValorTotalBtc</td>
-                <td title="@("Foxbit - " + crypto.ValorTotalReais)">@(crypto.ValorTotalBrlReal)</td>
+                <td>@crypto.ValorTotalUsd</td>
+                <td title="@("Foxbit - " + crypto.ValorTotalBrl)">@(crypto.ValorTotalBrlReal)</td>
                 <td>@(crypto.PercentualRelativo + "%")</td>
             </tr>
         }
@@ -27,6 +29,7 @@
         <tr>
             <td colspan="3"><b>Total</b></td>
             <td><b>@Model.ValorTotalBtc</b></td>
+            <td><b>@Model.ValorTotalUsd</b></td>
             <td title="@("Foxbit - " + Model.ValorTotalBrl)"><b>@(Model.ValorTotalBrlReal)</b></td>
             <td></td>
         </tr>

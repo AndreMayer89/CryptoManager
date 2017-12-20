@@ -170,6 +170,7 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.FLDC), balancos.FLDC));
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.FLO), balancos.FLO));
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.GAME), balancos.GAME));
+            lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.GAS), balancos.GAS));
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.GNO), balancos.GNO));
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.GNT), balancos.GNT));
             lista.Add(CriarRegistroRetornoBalanco(GetPropertyName(() => balancos.GRC), balancos.GRC));

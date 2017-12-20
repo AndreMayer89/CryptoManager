@@ -23,13 +23,5 @@ namespace CryptoManager.Entidades
                 return ListaBalancos.Sum(b => b.Quantidade);
             }
         }
-
-        public double QuantidadeBtcInvestida
-        {
-            get
-            {
-                return ListaCompras.Sum(b => b.QuantidadeInvestida);
-            }
-        }
     }
 }

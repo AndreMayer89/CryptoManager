@@ -1,7 +1,6 @@
 ﻿using CryptoManager.Entidades;
 using CryptoManager.Entidades.Especificas;
 using CryptoManager.Repositorio.Especificas;
-using CryptoManager.Util;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -19,7 +18,6 @@ namespace CryptoManager.Business
             retorno.ListaCotacoes = new List<CotacaoMoedaEntidade>();
             retorno.ListaQuantidades = new List<CryptoQuantidadeEntidade>();
             retorno.ListaResultadosOperacoesExchanges = new List<ResultadoOperacaoEntidade>();
-            var listaCompra = new List<OrdemMoedaEntidade>();
             var listaBalanco = new List<BalancoMoedaEntidade>();
             long nonce = DateTime.Now.Ticks;
             var resultadoConsulta = new List<ResultadoConsultaExchangeEntidade>();
@@ -41,7 +39,6 @@ namespace CryptoManager.Business
                     new ApiBitfinex(entradaBitfinex.ApiKey, entradaBitfinex.ApiSecret, nonce)));
 
             listaBalanco.AddRange(resultadoConsulta.SelectMany(r => r.Balanco));
-            listaCompra.AddRange(resultadoConsulta.SelectMany(r => r.LivroOrdens));
             retorno.ListaCotacoes.AddRange(resultadoConsulta.SelectMany(r => r.Cotacao));
             retorno.ListaResultadosOperacoesExchanges.AddRange(resultadoConsulta.Select(r => r.ResultadoOperacoes));
             foreach (var balanco in listaBalanco)
@@ -51,15 +48,6 @@ namespace CryptoManager.Business
                     retorno.ListaQuantidades.Add(new CryptoQuantidadeEntidade(balanco.Moeda));
                 }
                 retorno.ListaQuantidades.First(q => q != null && q.Tipo != null && q.Tipo.Sigla == balanco.Moeda.Sigla).ListaBalancos.Add(balanco);
-            }
-            foreach (var compra in listaCompra)
-            {
-                TipoCrypto moeda = compra.Moeda;
-                if (!retorno.ListaQuantidades.Any(q => q != null && q.Tipo != null && q.Tipo.Sigla == moeda.Sigla))
-                {
-                    retorno.ListaQuantidades.Add(new CryptoQuantidadeEntidade(moeda));
-                }
-                retorno.ListaQuantidades.First(q => q != null && q.Tipo != null && q.Tipo.Sigla == moeda.Sigla).ListaCompras.Add(compra);
             }
             if (listaBalancoColdWallet != null)
             {
@@ -80,44 +68,7 @@ namespace CryptoManager.Business
                         });
                 }
             }
-            foreach (var qtd in retorno.ListaQuantidades.Where(q => q.ListaCompras.Any(c => c.Exchange.Id == TipoExchange.ColdWallet.Id && c.QuantidadeInvestida == 0)))
-            {
-                var valorInvestidoTotalBtc = qtd.QuantidadeBtcInvestida;
-                var qtdUtilizadoEmComprasCold = qtd.ListaCompras.Where(c => c.Exchange == TipoExchange.ColdWallet && c.QuantidadeInvestida == 0).Sum(c => c.QuantidadeMoeda);
-                var qtdInvestidaAbatimento = valorInvestidoTotalBtc * (1 - (qtd.Quantidade / (qtd.Quantidade + qtdUtilizadoEmComprasCold)));
-                foreach (var compra in qtd.ListaCompras.Where(c => c.Exchange == TipoExchange.ColdWallet && c.QuantidadeInvestida == 0))
-                {
-                    compra.QuantidadeInvestida = -(compra.QuantidadeMoeda * qtdInvestidaAbatimento / qtdUtilizadoEmComprasCold);
-                }
-            }
             return retorno;
-        }
-
-        private List<CompraMoedaEmColdEntidade> ObterListaConsolidada(List<CompraMoedaEmColdEntidade> listaComprasColdWallet)
-        {
-            var listaComprasColdWalletConsolidada = new List<CompraMoedaEmColdEntidade>();
-            if (listaComprasColdWallet != null)
-            {
-                foreach (var moedaColdWallet in listaComprasColdWallet)
-                {
-                    if (!listaComprasColdWalletConsolidada.Any(m => m.SiglaMoedaComprada == moedaColdWallet.SiglaMoedaComprada
-                        && m.SiglaMoedaUtilizadaNaCompra == moedaColdWallet.SiglaMoedaUtilizadaNaCompra))
-                    {
-                        listaComprasColdWalletConsolidada.Add(new CompraMoedaEmColdEntidade()
-                        {
-                            SiglaMoedaComprada = moedaColdWallet.SiglaMoedaComprada,
-                            SiglaMoedaUtilizadaNaCompra = moedaColdWallet.SiglaMoedaUtilizadaNaCompra
-                        });
-                    }
-                    listaComprasColdWalletConsolidada.First(m => m.SiglaMoedaComprada == moedaColdWallet.SiglaMoedaComprada
-                        && m.SiglaMoedaUtilizadaNaCompra == moedaColdWallet.SiglaMoedaUtilizadaNaCompra)
-                        .QuantidadeMoedaComprada += moedaColdWallet.QuantidadeMoedaComprada;
-                    listaComprasColdWalletConsolidada.First(m => m.SiglaMoedaComprada == moedaColdWallet.SiglaMoedaComprada
-                        && m.SiglaMoedaUtilizadaNaCompra == moedaColdWallet.SiglaMoedaUtilizadaNaCompra)
-                        .QuantidadeMoedaUtilizadaNaCompra += moedaColdWallet.QuantidadeMoedaUtilizadaNaCompra;
-                }
-            }
-            return listaComprasColdWalletConsolidada;
         }
 
         public static double ObterValorTotalEmBtc(IEnumerable<CotacaoMoedaEntidade> listaCotacoes, CryptoQuantidadeEntidade moeda)

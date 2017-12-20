@@ -6,7 +6,6 @@ using CryptoManager.Util.Cache;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -109,25 +108,23 @@ namespace CryptoManager.Controllers
             {
                 if (quantidade.Quantidade > 0)
                 {
-                    double valorTotalEmBtc = ConsultaExchangesBusiness.ObterValorTotalEmBtc(consulta.ListaCotacoes, quantidade);
-                    double valorUnidadeEmBtc = quantidade.Quantidade > 0 ? (valorTotalEmBtc / quantidade.Quantidade) : 0;
-                    double valorTotalBrl = valorTotalEmBtc * valorBrlBtc;
-                    double valorTotalBrlReal = valorTotalEmBtc * valorBrlBtcReal;
-                    if (valorTotalBrl > 0 && valorTotalBrlReal > 0)
+                    double valorTotalBtc = ConsultaExchangesBusiness.ObterValorTotalEmBtc(consulta.ListaCotacoes, quantidade);
+                    double valorUnidadeEmBtc = quantidade.Quantidade > 0 ? (valorTotalBtc / quantidade.Quantidade) : 0;
+                    double valorTotalBrl = valorTotalBtc * valorBrlBtc;
+                    double valorTotalBrlReal = valorTotalBtc * valorBrlBtcReal;
+                    if (valorTotalBrl >= 0.01 && valorTotalBrlReal >= 0.01)
                     {
-                        double valorTotalDolares = valorTotalEmBtc * valorUsdBtc;
-                        double porcentagemValorizacaoBtc = quantidade.QuantidadeBtcInvestida > 0
-                            ? (100 * ((valorTotalEmBtc - quantidade.QuantidadeBtcInvestida) / quantidade.QuantidadeBtcInvestida)) : 0;
+                        double valorTotalUsd = valorTotalBtc * valorUsdBtc;
                         lista.Add(new CryptoModel
                         {
                             NomeCrypto = quantidade.Tipo.Nome,
                             SiglaCrypto = quantidade.Tipo.Sigla,
                             QuantidadeCryptoDouble = quantidade.Quantidade,
                             ValorCryptoBtc = valorUnidadeEmBtc.ToString("N8"),
-                            ValorTotalBtcDouble = valorTotalEmBtc,
+                            ValorTotalBtcDouble = valorTotalBtc,
                             ValorTotalBrlDouble = valorTotalBrl,
                             ValorTotalBrlRealDouble = valorTotalBrlReal,
-                            ValorTotalDolaresDouble = valorTotalDolares
+                            ValorTotalUsdDouble = valorTotalUsd
                         });
                     }
                 }

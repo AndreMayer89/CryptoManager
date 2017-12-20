@@ -27,6 +27,7 @@
         public PoloniexQuantidadeEntidadeMoeda FLDC { get; set; }
         public PoloniexQuantidadeEntidadeMoeda FLO { get; set; }
         public PoloniexQuantidadeEntidadeMoeda GAME { get; set; }
+        public PoloniexQuantidadeEntidadeMoeda GAS { get; set; }
         public PoloniexQuantidadeEntidadeMoeda GNO { get; set; }
         public PoloniexQuantidadeEntidadeMoeda GNT { get; set; }
         public PoloniexQuantidadeEntidadeMoeda GRC { get; set; }
