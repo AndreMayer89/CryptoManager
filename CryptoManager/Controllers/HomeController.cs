@@ -112,7 +112,7 @@ namespace CryptoManager.Controllers
                     double valorUnidadeEmBtc = quantidade.Quantidade > 0 ? (valorTotalBtc / quantidade.Quantidade) : 0;
                     double valorTotalBrl = valorTotalBtc * valorBrlBtc;
                     double valorTotalBrlReal = valorTotalBtc * valorBrlBtcReal;
-                    if (valorTotalBrl >= 0.01 && valorTotalBrlReal >= 0.01)
+                    if (valorTotalBrl >= 1 && valorTotalBrlReal >= 1)
                     {
                         double valorTotalUsd = valorTotalBtc * valorUsdBtc;
                         lista.Add(new CryptoModel
