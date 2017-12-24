@@ -89,7 +89,6 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroCotacao(TipoCrypto.ZenCash, retorno, "BTC-ZEN"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Syscoin, retorno, "BTC-SYS"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Viacoin, retorno, "BTC-VIA"));
-            lista.Add(CriarRegistroCotacao(TipoCrypto.SingularDTV, retorno, "BTC-SNGLS"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Bancor, retorno, "BTC-BNT"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.Status, retorno, "BTC-SNT"));
             lista.Add(CriarRegistroCotacao(TipoCrypto.BitcoinCash, retorno, "BTC-BCC"));
@@ -101,7 +100,7 @@ namespace CryptoManager.Repositorio.Especificas
                 Tipo = TipoCrypto.Bitcoin,
                 ValorUnidadeEmBitcoin = 1
             });
-            return lista;
+            return lista.Where(c => c != null).ToList();
         }
 
         public IEnumerable<BalancoMoedaEntidade> ListarBalancoConta()
