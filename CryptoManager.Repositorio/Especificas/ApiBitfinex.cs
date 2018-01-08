@@ -43,7 +43,6 @@ namespace CryptoManager.Repositorio.Especificas
             lista.Add(CriarRegistroRetorno(TipoCrypto.Litecoin, retorno, "tLTCBTC"));
             lista.Add(CriarRegistroRetorno(TipoCrypto.Zcash, retorno, "tZECBTC"));
             lista.Add(CriarRegistroRetorno(TipoCrypto.Monero, retorno, "tXMRBTC"));
-            lista.Add(CriarRegistroRetorno(TipoCrypto.Bitconnect, retorno, "tBCCBTC"));
             lista.Add(CriarRegistroRetorno(TipoCrypto.Ripple, retorno, "tXRPBTC"));
             lista.Add(CriarRegistroRetorno(TipoCrypto.OmiseGo, retorno, "tOMGBTC"));
             lista.Add(CriarRegistroRetorno(TipoCrypto.Santiment, retorno, "tSANBTC"));
